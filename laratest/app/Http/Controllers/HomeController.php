@@ -85,7 +85,20 @@ class HomeController extends Controller
     	$users = $this->getStudentList();
     	//show comfirm view
 
-    	return view('home.delete')->with('user', $user);
+        for($i =0; $i<count($users); $i++)
+        {
+            if($users[$i]['id'] == $id)
+            {
+                $user = $users[$i];
+                return view('home.delete')->with('user', $user);
+            }
+            else
+            {
+                return view('home.index')->with('users', $users);
+            }
+        }
+
+    	//return view('home.delete')->with('user', $user);
 
     }
 
@@ -94,6 +107,21 @@ class HomeController extends Controller
     	$users = $this->getStudentList();
     	//find student by id & delete
     	//updated list
+
+        for($i =0; $i<count($users); $i++)
+        {
+            if($users[$i]['id'] == $id)
+            {
+                unset($users[$i]);
+                break;
+
+                //return view('home.index')->with('users', $users);
+            }
+            else
+            {
+                echo"something went wrong!";
+            }
+        }
 
     	return view('home.index')->with('users', $users);
     }
