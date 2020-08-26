@@ -19,19 +19,19 @@
 			<td>Action</td>
 		</tr>
 
-	@for($i=0; $i != count($users); $i++)
+	@foreach($users as $user)
 		<tr>
-			<td>{{$users[$i]['id']}}</td>
-			<td>{{$users[$i]['name']}}</td>
-			<td>{{$users[$i]['email']}}</td>
-			<td>{{$users[$i]['password']}}</td>
+			<td>{{$user['id']}}</td>
+			<td>{{$user['name']}}</td>
+			<td>{{$user['email']}}</td>
+			<td>{{$user['password']}}</td>
 			<td>
-				<a href="/home/edit/{{$users[$i]['id']}}">Edit</a> |
-				<a href="/home/delete/{{$users[$i]['id']}}">Delete</a> |
-				<a href="/home/details/{{$users[$i]['id']}}">Details</a> |
+				<a href="/home/edit/{{$user['id']}}">Edit</a> |
+				<a href="/home/delete/{{$user['id']}}">Delete</a> |
+				<a href="/home/details/{{$user['id']}}">Details</a> |
 			</td>
 		</tr>
-	@endfor
+	@endforeach
 	</table>
 
 </body>
